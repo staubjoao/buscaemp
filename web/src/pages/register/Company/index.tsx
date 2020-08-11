@@ -1,7 +1,16 @@
-import React from 'react';
+import React from "react";
+
+import PageHeader from "../../../components/PageHeader";
+
+import "./styles.css";
 
 function Company() {
-  return <h1>Registrar empresa</h1>;
+  return (
+    <PageHeader
+      title="Cadastro de empresa."
+      description="Preencha o formulário:"
+    />
+  );
 }
 
 export default Company;
