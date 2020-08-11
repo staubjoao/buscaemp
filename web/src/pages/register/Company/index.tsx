@@ -6,10 +6,17 @@ import "./styles.css";
 
 function Company() {
   return (
-    <PageHeader
-      title="Cadastro de empresa."
-      description="Preencha o formulário:"
-    />
+    <div id="page-company-form" className="container">
+      <PageHeader
+        title="Cadastro de empresa."
+        description="Preencha o formulário:"
+      />
+      <main>
+        <fieldset>
+          <legend>Dados da sua empresa</legend>
+        </fieldset>
+      </main>
+    </div>
   );
 }
 

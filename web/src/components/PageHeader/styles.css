@@ -1,7 +1,4 @@
 .page-header {
-  position: absolute;
-  top: 0;
-  width: 100%;
   display: flex;
   flex-direction: column;
   background-color: var(--color-primary);
@@ -17,12 +14,9 @@
   padding: 1.6rem 0;
 }
 
-.page-header .top-bar-container h2 {
-  max-width: 30rem;
-  font-size: 1.6rem;
-  line-height: 2.6rem;
-  color: var(--color-text-in-primary);
-  margin-top: 2.4rem;
+.page-header .top-bar-container h3 {
+  font-size: 2rem;
+  color: var(--color-secundary);
 }
 
 .page-header .top-bar-container a {
@@ -37,7 +31,6 @@
 
 .page-header .top-bar-container > img {
   height: 1.6rem;
-  flood-color: var(--color-secundary);
 }
 
 .page-header .header-content {
@@ -63,7 +56,8 @@
 
 @media (min-width: 700px) {
   .page-header {
-    height: 240px;
+    height: 250px;
+    width: 100%;
   }
 
   .page-header .top-bar-container {
@@ -82,6 +76,6 @@
   }
 
   .page-header .header-content strong {
-    max-width: 400px;
+    max-width: 350px;
   }
 }
