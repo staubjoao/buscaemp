@@ -16,8 +16,8 @@ function Company() {
         <fieldset>
           <legend>Dados de login</legend>
         </fieldset>
-        <Input label="Email" name="email" />
-        <Input label="Senha" name="password" type="password" />
+        <Input label="Email" name="email" shouldHide={false}/>
+        {/* <Input label="Senha" name="password" type="password" />
         <Input
           label="Confirmar senha"
           name="confirmed-password"
@@ -42,7 +42,7 @@ function Company() {
         <Input label="Nome da Empresa" name="name" />
         <Input label="Número" name="number" />
         <Input label="Ramo de atividade" name="industry" />
-        <Input label="CNPJ" name="cnpj" />
+        <Input label="CNPJ" name="cnpj" /> */}
       </main>
     </div>
   );
