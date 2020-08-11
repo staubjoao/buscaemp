@@ -12,7 +12,7 @@ const Input: React.FC<InputProps> = ({ label, name, shouldHide, ...rest }) => {
   return (
     <div className="input-block">
       <label htmlFor={name}>
-        {label} <span className={shouldHide ? 'hidden' : ''}>*</span>{" "}
+        {label} <span className={shouldHide ? 'hidden' : 'mandatory'}>*</span>{" "}
       </label>
       <input type="text" id={name} {...rest} />
     </div>
