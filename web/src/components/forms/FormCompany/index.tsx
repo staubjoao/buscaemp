@@ -1,184 +1,156 @@
 import React from "react";
-import { useFormik } from "formik";
+import { Field, Form, Formik, FormikProps } from "formik";
 
 import PageHeader from "../../PageHeader";
 
 import "./styles.css";
 
-const FormCompany = () => {
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-      cpassword: "",
-      cep: "",
-      state: "",
-      city: "",
-      street: "",
-      addressNumber: "",
-      name: "",
-      number: "",
-      industry: "",
-      cnpj: "",
-    },
-    onSubmit: (values) => {
-      alert(JSON.stringify(values, null, 2));
-    },
-  });
-  return (
-    <div id="page-company-form" className="container">
-      <PageHeader
-        title="Cadastro de empresa."
-        description="Preencha o formulário:"
-      />
-      <main>
-        <form onSubmit={formik.handleSubmit}>
-          <fieldset>
-            <legend>Dados de login</legend>
-            <div className="input-block">
-              <label htmlFor="email">Email</label>
-              <span> *</span>
-              <input
-                id="email"
-                name="email"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.email}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="password">Senha</label>
-              <span> *</span>
-              <input
-                id="password"
-                name="password"
-                type="password"
-                onChange={formik.handleChange}
-                value={formik.values.password}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="confirmed-password">Confirmar senha</label>
-              <span> *</span>
-              <input
-                id="cpassword"
-                name="cpassword"
-                type="password"
-                onChange={formik.handleChange}
-                value={formik.values.cpassword}
-              />
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Endereço da sua empresa</legend>
-            <div className="input-block">
-              <label htmlFor="cep">CEP</label>
-              <span> *</span>
-              <input
-                id="cep"
-                name="cep"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.cep}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="state">Estado</label>
-              <span> *</span>
-              <input
-                id="state"
-                name="state"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.state}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="city">Cidade</label>
-              <span> *</span>
-              <input
-                id="city"
-                name="city"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.city}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="street">Rua</label>
-              <span> *</span>
-              <input
-                id="street"
-                name="street"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.street}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="addressNumber">Número</label>
-              <span> *</span>
-              <input
-                id="addressNumber"
-                name="addressNumber"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.addressNumber}
-              />
-            </div>
-          </fieldset>
-          <fieldset>
-            <legend>Informaçoes da sua empresa</legend>
-            <div className="input-block">
-              <label htmlFor="name">Nome da empresa</label>
-              <span> *</span>
-              <input
-                id="name"
-                name="name"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.name}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="number">Número para contato</label>
-              <span> *</span>
-              <input
-                id="number"
-                name="number"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.number}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="industry">Ramo de atividade</label>
-              <span> *</span>
-              <input
-                id="industry"
-                name="industry"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.industry}
-              />
-            </div>
-            <div className="input-block">
-              <label htmlFor="cnpj">CNPJ</label>
-              <span> *</span>
-              <input
-                id="cnpj"
-                name="cnpj"
-                type="text"
-                onChange={formik.handleChange}
-                value={formik.values.cnpj}
-              />
-            </div>
-          </fieldset>
-          <button type="submit">Cadastrar</button>
-        </form>
-      </main>
-    </div>
-  );
+const MyInput = ({ field, form, ...props }) => {
+  return <input {...field} {...props} />;
 };
 
+//trocar os valres e começar a trabalhar com esse codigo
+
+const FormCompany = () => (
+  <div id="page-company-form" className="container">
+    <PageHeader
+      title="Cadastro de empresa."
+      description="Preencha o formulário:"
+    />
+    <main>
+      <Formik
+        initialValues={{
+          email: "",
+          password: "",
+          cpassword: "",
+          cep: "",
+          state: "",
+          city: "",
+          street: "",
+          addressNumber: "",
+          name: "",
+          phone: "",
+          industry: "",
+          cnpj: "",
+        }}
+        onSubmit={(values, actions) => {
+          setTimeout(() => {
+            alert(JSON.stringify(values, null, 2));
+            actions.setSubmitting(false);
+          }, 1000);
+        }}
+      >
+        {(props: FormikProps<any>) => (
+          <Form>
+            <fieldset>
+              <legend>Dados de login</legend>
+              <div className="input-block">
+                <label htmlFor="email">Email</label>
+                <span> *</span>
+                <Field id="email" name="email" type="email" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="password">Senha</label>
+                <span> *</span>
+                <Field id="password" name="password" type="password" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="confirmed-password">Confirmar senha</label>
+                <span> *</span>
+                <Field id="cpassword" name="cpassword" type="password" />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Endereço da sua empresa</legend>
+              <div className="input-block">
+                <label htmlFor="cep">CEP</label>
+                <span> *</span>
+                <Field
+                  id="cep"
+                  name="cep"
+                  type="text"
+                  onBlur={(e) => {
+                    const { value } = e.target;
+
+                    const cep = value?.replace(/[^0-9]/g, "");
+
+                    if (cep.length != 8) {
+                      return;
+                    }
+                    fetch(`https://viacep.com.br/ws/${cep}/json/`)
+                      .then((res) => res.json())
+                      .then((data) => {
+                        
+                      });
+                  }}
+                />
+              </div>
+              <div className="input-block">
+                <label htmlFor="state">Estado</label>
+                <span> *</span>
+                <Field id="state" name="state" type="text" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="city">Cidade</label>
+                <span> *</span>
+                <Field id="city" name="city" type="text" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="street">Rua</label>
+                <span> *</span>
+                <Field id="street" name="street" type="text" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="addressNumber">Número</label>
+                <span> *</span>
+                <Field id="addressNumber" name="addressNumber" type="text" />
+              </div>
+            </fieldset>
+            <fieldset>
+              <legend>Informaçoes da sua empresa</legend>
+              <div className="input-block">
+                <label htmlFor="name">Nome da empresa</label>
+                <span> *</span>
+                <Field id="name" name="name" type="text" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="phone">Número para contato</label>
+                <span> *</span>
+                <Field id="phone" name="phone" type="text" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="industry">Ramo de atividade</label>
+                <span> *</span>
+                <Field id="industry" name="industry" type="text" />
+              </div>
+              <div className="input-block">
+                <label htmlFor="cnpj">CNPJ</label>
+                <span> *</span>
+                <Field id="cnpj" name="cnpj" type="text" />
+              </div>
+            </fieldset>
+            <button type="submit">Cadastrar</button>
+          </Form>
+        )}
+      </Formik>
+    </main>
+  </div>
+);
+
 export default FormCompany;
+
+/* <Field name="lastName">
+  {({
+    field, // { name, value, onChange, onBlur }
+    form: { touched, errors }, // also values, setXXXX, handleXXXX, dirty, isValid, status, etc.
+    meta,
+  }) => (
+    <div>
+      <input type="text" placeholder="Email" {...field} />
+      {meta.touched && meta.error && (
+        <div className="error">{meta.error}</div>
+      )}
+    </div>
+  )}
+</Field>
+<Field name="lastName" placeholder="Doe" component={MyInput} /> */
