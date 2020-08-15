@@ -79,9 +79,7 @@ const FormCompany = () => (
                     }
                     fetch(`https://viacep.com.br/ws/${cep}/json/`)
                       .then((res) => res.json())
-                      .then((data) => {
-                        
-                      });
+                      .then((data) => {});
                   }}
                 />
               </div>
@@ -129,10 +127,12 @@ const FormCompany = () => (
                 <Field id="cnpj" name="cnpj" type="text" />
               </div>
             </fieldset>
-            <button type="submit">Cadastrar</button>
           </Form>
         )}
       </Formik>
+      <footer>
+        <button type="button">Salvar cadastro</button>
+      </footer>
     </main>
   </div>
 );
